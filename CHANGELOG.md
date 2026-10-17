@@ -2,6 +2,15 @@
 
 All notable user-facing changes to dsh-web-ui-notify are documented in this file. The project follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and uses semantic version tags.
 
+## [0.1.7] - 2026-10-17
+
+Verified against dsh `0.2.1`.
+
+### Fixed
+
+- Build: call the shared `clientBundle` preset with the package directory (`import.meta.dirname`) instead of the package name. DSH 0.2.1's preset reads `<packageDir>/package.json`, so the old call failed with "cannot read …/dsh-web-ui-notify/package.json" and `lib/` could not be rebuilt against the running harness.
+- Rebuilt `lib/` with the 0.2.1 toolchain; the runtime contract from 0.1.6 (`uiSession.sessionStatus`, the `mainView`-retained Session, `uiWorkspace.openSession`) is unchanged and still matches the 0.2.1 client.
+
 ## [0.1.6] - 2026-09-25
 
 Requires dsh `0.1.7-rc.2` or newer: the unified `uiSession.sessionStatus` source this
